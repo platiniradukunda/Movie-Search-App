@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import Results from './Results';
+// import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class Home extends Component {
     constructor () {
         super();
         this.state = {
-            data: null,
+            movieInfo: '',
             userInput: '',
         }
     }
@@ -29,7 +32,7 @@ class Home extends Component {
             console.log(data);
             //  changing the data in state to update it with the fetched data
             this.setState({
-                data: data,
+                movieInfo: data,
             })
         }
         catch(err) {
@@ -38,14 +41,27 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="searchDiv">
                 <h1>Movie Search App</h1>
                 {/* the form has a function to call on the movie api which will happen on submit that's linked to the button in the form */}
-                <form action="" onSubmit={this.findMovie}>
+                <form action="" className="landingPage" onSubmit={this.findMovie}>
                     <label htmlFor="query">Movie Name</label>
                     <input type="text" name="query" onChange={(event)=>{this.changeUserInput(event.target.value)}} />
+                   {/* <Link to="/results"> */}
                     <button type="submit">Search</button>
+                    {/* </Link> */}
                 </form>
+                {/* <Switch>
+                    <Route path='/results' >
+                        <Results movieResults={this.state.data}/>
+                    </Route>
+
+                {/* <Results /> */}
+
+
+                {/* </Switch> */} 
+                <Results movieResults={this.state.movieInfo} />
+
             </div>
         );
     }
