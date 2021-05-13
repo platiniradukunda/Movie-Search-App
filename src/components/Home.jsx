@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import MovieDetails from './MovieDetails';
 import Results from './Results';
 // import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -16,6 +17,7 @@ class Home extends Component {
         this.setState({
             userInput: input,
         })
+        console.log(input)
     }
     // function to grab data from the movie api
     findMovie = async (event) => {
@@ -47,7 +49,7 @@ class Home extends Component {
                 <form action="" className="landingPage" onSubmit={this.findMovie}>
                     <label htmlFor="query">Movie Name</label>
                     <input type="text" name="query" onChange={(event)=>{this.changeUserInput(event.target.value)}} />
-                   {/* <Link to="/results"> */}
+                   {/* <Link to="/results" > */}
                     <button type="submit">Search</button>
                     {/* </Link> */}
                 </form>
